@@ -1,35 +1,49 @@
-<script setup lang="ts">
-import Navbar from '../components/Navbar.vue'
-import ContactUs from '../components/ContactUs.vue'
-import luffyImage from '../assets/luffy.jpg'
-</script>
-
 <template>
-  <Navbar />
-  <main>
-    <section class="hero">
-      <div class="hero-text">
-        <p class="small-text">LEARN • CREATE • GROW</p>
+  <div>
+    <h2>Welcome to Student Management System</h2>
 
-        <h1>
-          Learn skills.<br />
-          Build your <span>future.</span>
-        </h1>
+    <p>This is my Vue application.</p>
 
-        <p class="description">
-          Discover courses designed to help you learn new skills,
-          explore your creativity, and grow your career.
-        </p>
+    <hr>
 
-        <div class="hero-buttons">
-          <button class="primary-btn">Explore Courses →</button>
-          <button class="secondary-btn">Learn More</button>
-        </div>
-      </div>
-<div class="hero-image">
-  <img :src="luffyImage" alt="Luffy" />
-</div>
-    </section>
-  </main>
-  <ContactUs />
+    <h2>Student List</h2>
+
+    <div
+      v-for="student in students"
+      :key="student.id"
+      class="student-card"
+    >
+    <br>
+      <h3>{{ student.name }}</h3>
+      <p>Age: {{ student.age }}</p>
+      <p>Email: {{ student.email }}</p>
+      <p>Department: {{ student.department.name }}</p>
+
+      <a :href="`/edit/${student.id}`">Edit</a>
+      <a :href="`/delete/${student.id}`">Delete</a>
+
+    </div>
+
+    <p v-if="students.length === 0">
+      No students found.
+    </p>
+  </div>
 </template>
+
+<script setup>
+
+import { ref, onMounted } from 'vue'
+
+const students = ref([])
+
+onMounted(() => {
+
+  fetch('http://127.0.0.1:8000/api/students/')
+    .then(response => response.json())
+    .then(data => {
+      students.value = data
+    })
+
+})
+
+</script>

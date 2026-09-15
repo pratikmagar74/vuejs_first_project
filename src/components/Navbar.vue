@@ -1,18 +1,17 @@
+
 <template>
   <nav class="navbar">
+
     <div class="logo">
-      Tidemy
+      Student Management
     </div>
 
     <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Courses</a>
-      <a href="#">About</a>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/add">Add Student</a>
     </div>
 
-    <button class="login-btn">
-      Log in
-    </button>
   </nav>
 </template>
 
@@ -22,13 +21,13 @@
   align-items: center;
   justify-content: space-between;
   padding: 24px 60px;
-  background: #fafbfa;
+  background: #0c0c0c;
 }
 
 .logo {
   font-size: 28px;
   font-weight: 700;
-  color: #0b0d09;
+  color: #e1e7e1;
 }
 
 .nav-links {
@@ -38,19 +37,11 @@
 
 .nav-links a {
   text-decoration: none;
-  color: #0b0d09;
+  color: #f1f8eb;
   font-size: 15px;
 }
 
 .nav-links a:hover {
   opacity: 0.6;
-}
-
-.login-btn {
-  border: 1px solid #0b0d09;
-  background: transparent;
-  padding: 10px 22px;
-  border-radius: 25px;
-  cursor: pointer;
 }
 </style>
